@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Template d'alignement</title>
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/ui.css" />
+    <link rel="stylesheet" href="assets/css/cards.css" />
+    <link rel="stylesheet" href="assets/css/sections.css" />
+    <link rel="stylesheet" href="assets/css/editor.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Navigation principale">
+      <a class="brand" href="#overview" aria-label="Retour au début">
+        <span class="brand-mark"></span>
+        <span id="siteName">Plan d'alignement</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#limits">Limites</a>
+        <a href="#steps">Étapes</a>
+        <a href="#outputs">Livrables</a>
+        <a href="#questions">Questions</a>
+      </nav>
+      <button id="modeToggle" class="icon-button" type="button" aria-pressed="true">
+        Parcourir
+      </button>
+    </header>
+
+    <aside id="editorPanel" class="editor-panel" aria-label="Éditeur du template">
+      <div class="editor-header">
+        <div>
+          <p class="eyebrow">Mode édition</p>
+          <h2>Assembler la page</h2>
+        </div>
+      </div>
+
+      <section class="editor-group" aria-labelledby="visible-sections-title">
+        <h3 id="visible-sections-title">Sections visibles</h3>
+        <div id="sectionControls" class="control-list"></div>
+      </section>
+
+      <section class="editor-group" aria-labelledby="content-actions-title">
+        <h3 id="content-actions-title">Ajouter du contenu</h3>
+        <div class="editor-actions">
+          <button data-add="topics" class="icon-button" type="button">Sujet</button>
+          <button data-add="limits" class="icon-button" type="button">Contrainte</button>
+          <button data-add="steps" class="icon-button" type="button">Étape</button>
+          <button data-add="questions" class="icon-button" type="button">Question</button>
+        </div>
+      </section>
+
+      <section class="editor-group" aria-labelledby="data-actions-title">
+        <h3 id="data-actions-title">Données</h3>
+        <div class="editor-actions">
+          <button id="saveTemplate" class="button primary" type="button">Sauvegarder localement</button>
+          <button id="exportTemplate" class="button secondary" type="button">Exporter JSON</button>
+          <button id="resetTemplate" class="button secondary" type="button">Reset</button>
+        </div>
+        <p id="editorStatus" class="editor-status" aria-live="polite"></p>
+      </section>
+    </aside>
+
+    <main>
+      <section id="overview" class="hero">
+        <div class="hero-content">
+          <p id="subjectType" class="eyebrow"></p>
+          <h1 id="subjectTitle"></h1>
+          <p id="subjectSummary" class="hero-text"></p>
+          <div class="hero-actions">
+            <a id="primaryAction" class="button primary" href="#steps"></a>
+            <a id="secondaryAction" class="button secondary" href="#limits"></a>
+          </div>
+        </div>
+
+        <aside id="subjectFacts" class="status-panel" aria-label="Resume"></aside>
+      </section>
+
+      <section id="understanding" class="section split" aria-labelledby="understanding-title">
+        <div>
+          <p id="understandingEyebrow" class="eyebrow"></p>
+          <h2 id="understanding-title"></h2>
+          <p id="understandingText"></p>
+        </div>
+        <div id="topicCards" class="topic-grid"></div>
+      </section>
+
+      <section id="limits" class="section" aria-labelledby="limits-title">
+        <div class="section-heading">
+          <div>
+            <p id="limitsEyebrow" class="eyebrow"></p>
+            <h2 id="limits-title"></h2>
+          </div>
+          <p id="limitsText"></p>
+        </div>
+        <div id="limitTabs" class="tablist" role="tablist"></div>
+        <article id="limitDetail" class="detail-panel" aria-live="polite"></article>
+      </section>
+
+      <section id="steps" class="section" aria-labelledby="steps-title">
+        <div class="section-heading">
+          <div>
+            <p id="stepsEyebrow" class="eyebrow"></p>
+            <h2 id="steps-title"></h2>
+          </div>
+          <div class="progress-meter" aria-label="Progression du plan">
+            <span id="progressFill"></span>
+          </div>
+        </div>
+        <div id="stepTimeline" class="timeline"></div>
+        <button data-add="steps" class="button secondary inline-add" type="button">
+          Ajouter une étape
+        </button>
+      </section>
+
+      <section id="outputs" class="section" aria-labelledby="outputs-title">
+        <div class="section-heading">
+          <div>
+            <p id="outputsEyebrow" class="eyebrow"></p>
+            <h2 id="outputs-title"></h2>
+          </div>
+          <button id="toggleOutputs" class="icon-button" type="button" aria-pressed="false">
+            Tout afficher
+          </button>
+        </div>
+        <div id="outputMatrix" class="matrix"></div>
+      </section>
+
+      <section id="questions" class="section closing" aria-labelledby="questions-title">
+        <div>
+          <p id="questionsEyebrow" class="eyebrow"></p>
+          <h2 id="questions-title"></h2>
+        </div>
+        <ul id="questionList" class="question-list"></ul>
+      </section>
+    </main>
+
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/state.js" defer></script>
+    <script src="assets/js/dom.js" defer></script>
+    <script src="assets/js/page.js" defer></script>
+    <script src="assets/js/render.js" defer></script>
+    <script src="assets/js/interactions.js" defer></script>
+    <script src="assets/js/editor.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>

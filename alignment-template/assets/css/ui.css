@@ -1,0 +1,89 @@
+.eyebrow,
+.status-label,
+.meta-label {
+  color: var(--accent-dark);
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.button,
+.icon-button {
+  align-items: center;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.button {
+  padding: 0 1rem;
+}
+
+.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.secondary,
+.icon-button,
+.tab {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.icon-button {
+  padding: 0 0.9rem;
+}
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  border-radius: var(--radius);
+  cursor: pointer;
+  padding: 0.7rem 0.9rem;
+}
+
+.tab[aria-selected="true"] {
+  background: var(--ink);
+  color: white;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.chip {
+  background: var(--surface-soft);
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  padding: 0.32rem 0.62rem;
+}
+
+.progress-meter {
+  background: var(--line);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  width: min(280px, 100%);
+}
+
+.progress-meter span {
+  background: linear-gradient(90deg, var(--accent), var(--gold), var(--coral));
+  display: block;
+  height: 100%;
+  transition: width 220ms ease;
+  width: 0;
+}

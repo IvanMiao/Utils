@@ -1,0 +1,105 @@
+.editor-panel {
+  background: rgb(255 255 255 / 94%);
+  border-left: 1px solid var(--line);
+  bottom: 0;
+  box-shadow: -18px 0 50px rgb(22 42 35 / 10%);
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: max-content;
+  overflow: auto;
+  padding: 1rem;
+  position: fixed;
+  right: 0;
+  top: 68px;
+  transform: translateX(0);
+  transition: transform 180ms ease;
+  width: min(360px, 92vw);
+  z-index: 18;
+}
+
+.editor-panel.is-closed {
+  transform: translateX(100%);
+}
+
+body.browse-mode .editor-panel,
+body.browse-mode .delete-item,
+body.browse-mode .inline-add {
+  display: none;
+}
+
+body.browse-mode [contenteditable="false"] {
+  outline: 0;
+}
+
+.editor-header h2 {
+  font-size: 1.25rem;
+}
+
+.editor-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.9rem;
+}
+
+.editor-group h3 {
+  font-size: 0.95rem;
+}
+
+.control-list,
+.editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.section-toggle {
+  align-items: center;
+  background: var(--surface-soft);
+  border-radius: var(--radius);
+  display: flex;
+  gap: 0.45rem;
+  padding: 0.45rem 0.55rem;
+}
+
+.editor-status {
+  color: var(--muted);
+  font-size: 0.85rem;
+  min-height: 1.2rem;
+}
+
+[contenteditable="true"] {
+  border-radius: 6px;
+  outline: 1px dashed transparent;
+  outline-offset: 4px;
+}
+
+[contenteditable="true"]:hover {
+  outline-color: var(--line);
+}
+
+[contenteditable="true"]:focus {
+  background: rgb(15 118 110 / 8%);
+  outline-color: var(--accent);
+}
+
+.inline-add {
+  margin-top: 1rem;
+}
+
+.delete-item {
+  background: transparent;
+  border: 0;
+  color: var(--coral);
+  cursor: pointer;
+  font-weight: 760;
+  justify-self: start;
+  padding: 0;
+}
+
+@media (min-width: 1180px) {
+  body.editor-open main {
+    padding-right: 320px;
+  }
+}

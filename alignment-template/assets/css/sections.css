@@ -1,0 +1,67 @@
+.timeline {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 90px 1fr 220px;
+  padding: 1rem;
+}
+
+.step-index {
+  align-items: center;
+  background: var(--surface-soft);
+  border-radius: var(--radius);
+  color: var(--accent-dark);
+  display: flex;
+  font-weight: 780;
+  justify-content: center;
+}
+
+.step-card p,
+.matrix-card p,
+.question-list li {
+  color: var(--muted);
+}
+
+.step-meta {
+  border-left: 1px solid var(--line);
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.question-list {
+  display: grid;
+  gap: 0.8rem;
+  list-style: none;
+}
+
+.question-list li {
+  background: var(--surface);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+@media (max-width: 900px) {
+  .step-card {
+    grid-template-columns: 1fr;
+  }
+
+  .step-index {
+    min-height: 52px;
+  }
+
+  .step-meta {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 0.8rem;
+  }
+}
