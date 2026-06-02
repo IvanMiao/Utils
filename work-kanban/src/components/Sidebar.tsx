@@ -1,4 +1,4 @@
-import { ChevronRight, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button, Tooltip, TooltipContent, TooltipTrigger } from "../design-system";
 import type { View } from "../lib/types";
@@ -9,14 +9,12 @@ type SidebarProps = {
   activeView: View;
   isCollapsed: boolean;
   setActiveView: (view: View) => void;
-  toggleCollapsed: () => void;
 };
 
 export function Sidebar({
   activeView,
   isCollapsed,
   setActiveView,
-  toggleCollapsed,
 }: SidebarProps): JSX.Element {
   return (
     <aside
@@ -43,25 +41,6 @@ export function Sidebar({
           <p className="text-xs font-medium text-muted-foreground">Personal Jira</p>
         </div>
       </div>
-
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            className={cn(
-              "absolute -right-3 z-10 hidden size-7 rounded-full bg-card shadow-sm transition-[top] duration-200 ease-linear lg:inline-flex",
-              isCollapsed ? "top-14" : "top-5",
-            )}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-            onClick={toggleCollapsed}
-          >
-            {isCollapsed ? <PanelLeftOpen className="h-3.5 w-3.5" /> : <PanelLeftClose className="h-3.5 w-3.5" />}
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent side="right">{isCollapsed ? "Expand sidebar" : "Collapse sidebar"}</TooltipContent>
-      </Tooltip>
 
       <nav className="mt-6 grid grid-cols-2 gap-1.5 lg:grid-cols-1" aria-label="Primary navigation">
         {viewItems.map((item) => (

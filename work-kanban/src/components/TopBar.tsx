@@ -1,4 +1,14 @@
-import { ArrowDownToLine, Import, Moon, MoreHorizontal, Plus, Search, Sun } from "lucide-react";
+import {
+  ArrowDownToLine,
+  Import,
+  Moon,
+  MoreHorizontal,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Plus,
+  Search,
+  Sun,
+} from "lucide-react";
 import type { ChangeEvent, MutableRefObject } from "react";
 import {
   Button,
@@ -32,8 +42,10 @@ type TopBarProps = {
   exportJson: () => void;
   importJson: (event: ChangeEvent<HTMLInputElement>) => void;
   fileInputRef: MutableRefObject<HTMLInputElement | null>;
+  isSidebarCollapsed: boolean;
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  toggleSidebarCollapsed: () => void;
 };
 
 type CommandToolbarProps = Pick<
@@ -54,8 +66,10 @@ export function TopBar({
   exportJson,
   importJson,
   fileInputRef,
+  isSidebarCollapsed,
   theme,
   setTheme,
+  toggleSidebarCollapsed,
 }: TopBarProps): JSX.Element {
   const activeLabel = viewItems.find((item) => item.id === activeView)?.label;
   const formattedToday = new Intl.DateTimeFormat("en", {
@@ -67,23 +81,26 @@ export function TopBar({
   return (
     <header className="rounded-lg border bg-card p-3 shadow-sm">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase text-muted-foreground">{formattedToday}</p>
-          <h2 className="mt-1 text-2xl font-semibold tracking-normal">{activeLabel}</h2>
+        <div className="flex items-center gap-3">
+          <SidebarTriggerButton isCollapsed={isSidebarCollapsed} onClick={toggleSidebarCollapsed} />
+          <div>
+            <p className="text-xs font-semibold uppercase text-muted-foreground">{formattedToday}</p>
+            <h2 className="mt-1 text-2xl font-semibold tracking-normal">{activeLabel}</h2>
+          </div>
         </div>
 
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
           <div className="grid gap-2 sm:grid-cols-[minmax(220px,1fr)_160px_160px] lg:w-[620px]">
             <div className="relative min-w-0">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              className="pl-9"
-              aria-label="Search tasks"
-              placeholder="Search tasks..."
-            />
-          </div>
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                className="pl-9"
+                aria-label="Search tasks"
+                placeholder="Search tasks..."
+              />
+            </div>
             <Select value={pocFilter} onChange={(event) => setPocFilter(event.target.value)}>
               <option value="all">All POCs</option>
               {pocs.map((poc) => (
@@ -116,6 +133,34 @@ export function TopBar({
         </div>
       </div>
     </header>
+  );
+}
+
+function SidebarTriggerButton({
+  isCollapsed,
+  onClick,
+}: {
+  isCollapsed: boolean;
+  onClick: () => void;
+}): JSX.Element {
+  const label = isCollapsed ? "Expand sidebar" : "Collapse sidebar";
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          size="icon"
+          className="hidden lg:inline-flex"
+          aria-label={label}
+          onClick={onClick}
+        >
+          {isCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent side="bottom">{label}</TooltipContent>
+    </Tooltip>
   );
 }
 

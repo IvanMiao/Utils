@@ -39,4 +39,4 @@ Avoid a full shadcn `Sidebar` migration until the app needs collapse, mobile dra
 
 Implementation status: simplified. The sidebar is now pure navigation with a desktop collapse control. Expanded mode shows brand and labels; collapsed mode becomes an icon rail with tooltips. POC cards and metric summaries were removed because they duplicated dedicated views and created layout pressure.
 
-Follow-up adjustment: the collapsed sidebar follows the shadcn `sidebar-07` / `collapsible="icon"` pattern more closely. Width is controlled by the sidebar rail itself, labels fade out with width/opacity transitions, and the collapse trigger sits on the sidebar edge instead of sharing the logo row.
+Follow-up adjustment: the collapsed sidebar follows the shadcn `sidebar-07` / `collapsible="icon"` pattern more closely. Width is controlled by the sidebar rail itself, labels fade out with width/opacity transitions, and the collapse trigger lives in the main header instead of floating over the sidebar logo.

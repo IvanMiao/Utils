@@ -259,7 +259,6 @@ function App(): JSX.Element {
           activeView={activeView}
           isCollapsed={isSidebarCollapsed}
           setActiveView={setActiveView}
-          toggleCollapsed={() => setIsSidebarCollapsed((current) => !current)}
         />
 
         <main className="min-w-0 lg:pl-1">
@@ -276,8 +275,10 @@ function App(): JSX.Element {
             exportJson={exportJson}
             importJson={importJson}
             fileInputRef={fileInputRef}
+            isSidebarCollapsed={isSidebarCollapsed}
             theme={theme}
             setTheme={setTheme}
+            toggleSidebarCollapsed={() => setIsSidebarCollapsed((current) => !current)}
           />
 
           <div className="mt-5">
